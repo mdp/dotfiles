@@ -1,0 +1,17 @@
+# git
+alias g="git"
+
+# filesystem
+alias ..="cd ../"
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias la="ls -al"
+alias o=$EDITOR
+alias dotf="cd $HOME/.dotfiles"
+
+# Mac Stuff
+alias flushdns="dscacheutil -flushcache;sudo killall -HUP mDNSResponder"
+
+# Mosh mouse support
+alias moshm="perl -E ' print \"\e[?1005h\e[?1002h\" ' && mosh"
+
