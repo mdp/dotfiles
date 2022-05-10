@@ -26,3 +26,9 @@ if [ -z "$SSH_AUTH_SOCK" ]; then
    fi
    eval `cat $HOME/.ssh/ssh-agent`
 fi
+
+if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+if [ -f  /etc/bash_completion.d/git ]; then
+    . /etc/bash_completion.d/git
+fi
