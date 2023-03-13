@@ -67,3 +67,5 @@
 	process = git-lfs filter-process
 [include]
         path = ~/.gitconfig.local
+[credential]
+	helper = store
