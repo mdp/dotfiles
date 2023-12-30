@@ -36,3 +36,11 @@ fi
 if [ -f /home/linuxbrew/.linuxbrew/bin/brew ]; then
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
+
+if [ -d "$HOME/.cargo" ] ; then
+    . "$HOME/.cargo/env"
+fi
+
+if [ -d "/usr/local/go" ] ; then
+    export PATH=$PATH:/usr/local/go/bin
+fi
