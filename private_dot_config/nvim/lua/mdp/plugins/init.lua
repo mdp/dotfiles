@@ -1,6 +1,6 @@
 return {
   {
-    "neovim/nvim-lspconfig",
+    'kylechui/nvim-surround'
   },
   { 'github/copilot.vim' },
 }
