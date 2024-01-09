@@ -37,6 +37,8 @@ keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer
 api.nvim_command("autocmd TermOpen * startinsert")             -- starts in insert mode
 api.nvim_command("autocmd TermOpen * setlocal nonumber")       -- no numbers
 api.nvim_command("autocmd TermEnter * setlocal signcolumn=no") -- no sign column
+api.nvim_command("autocmd TermEnter * startinsert") -- always live in insert mode
 
 -- Escape terminal mode and back a buffer
 keymap.set('t', '<C-^>', "<C-\\><C-n><C-^>", { desc = "Escape terminal mode and back a buffer" })
+keymap.set('t', '<C-w><C-w>', "<C-\\><C-n><C-w><C-w>", { desc = "Escape terminal go to another pane" })
