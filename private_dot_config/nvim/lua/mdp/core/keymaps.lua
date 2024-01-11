@@ -26,11 +26,13 @@ keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" }) 
 keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" }) -- make split windows equal width & height
 keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" }) -- close current split window
 
-keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" }) -- open new tab
-keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" }) -- close current tab
-keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" }) --  go to next tab
-keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) --  go to previous tab
-keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
+keymap.set("n", "<leader>ts", "<cmd>ToggleTerm<CR>", { desc = "Toggle Split Term on bottom" }) -- close current split window
+
+-- keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" }) -- open new tab
+-- keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" }) -- close current tab
+-- keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" }) --  go to next tab
+-- keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) --  go to previous tab
+-- keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
 
 --
 -- Terminal mappings
@@ -41,4 +43,7 @@ api.nvim_command("autocmd TermEnter * startinsert") -- always live in insert mod
 
 -- Escape terminal mode and back a buffer
 keymap.set('t', '<C-^>', "<C-\\><C-n><C-^>", { desc = "Escape terminal mode and back a buffer" })
-keymap.set('t', '<C-w><C-w>', "<C-\\><C-n><C-w><C-w>", { desc = "Escape terminal go to another pane" })
+keymap.set('t', '<C-w><C-w>', "<C-\\><C-n><C-w><C-w>", { desc = "Escape terminal go to last pane" })
+keymap.set('t', '<C-w>k', "<C-\\><C-n><C-w><C-k>", { desc = "Escape terminal go to up pane" })
+keymap.set('t', '<C-w>h', "<C-\\><C-n><C-w><C-h>", { desc = "Escape terminal go to left pane" })
+keymap.set('t', '<C-w>j', "<C-\\><C-n><C-w><C-j>", { desc = "Escape terminal go to down pane" })
