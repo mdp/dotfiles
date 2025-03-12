@@ -116,16 +116,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
-fi
-
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/.local/bin" ] ; then
-    PATH="$HOME/.local/bin:$PATH"
-fi
-
 if [ -z "$SSH_AUTH_SOCK" ]; then
    # Check for a currently running instance of the agent
    RUNNING_AGENT="`ps -ax | grep 'ssh-agent -s' | grep -v grep | wc -l | tr -d '[:space:]'`"
@@ -140,27 +130,5 @@ if [ -f /usr/share/bash-completion/bash_completion ]; then
     . /usr/share/bash-completion/bash_completion
 elif [ -f  /etc/bash_completion.d/git ]; then
     . /etc/bash_completion.d/git
-fi
-
-if [ -f /home/linuxbrew/.linuxbrew/bin/brew ]; then
-    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-fi
-
-if [ -d "$HOME/.cargo" ] ; then
-    . "$HOME/.cargo/env"
-fi
-
-if [ -d "/usr/local/go" ] ; then
-    export PATH=$PATH:/usr/local/go/bin
-fi
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-export ASDF_DIR="$HOME/.asdf"
-if [ -d $ASDF_DIR ] ; then
-    . "$HOME/.asdf/asdf.sh"
-    . "$HOME/.asdf/completions/asdf.bash"
 fi
 
