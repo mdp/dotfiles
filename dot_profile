@@ -29,10 +29,24 @@ fi
 
 export PATH="$HOME/.local/bin:$PATH"
 
-# Check if SSH agent is running
-if [ -z "$SSH_AUTH_SOCK" ] || ! [ -S "$SSH_AUTH_SOCK" ]; then
-    echo "Starting new SSH agent..."
-    eval "$(ssh-agent -s)"
-else
-    echo "SSH agent already running."
+# SSH agent setup - only run outside of tmux
+if [ -z "$TMUX" ]; then
+    # Create SSH directory if it doesn't exist
+    if [ ! -d "$HOME/.ssh" ]; then
+        mkdir -p "$HOME/.ssh"
+        chmod 700 "$HOME/.ssh"
+    fi
+
+    # Fixed socket path
+    SSH_AUTH_SOCK_LINK="$HOME/.ssh/ssh_auth_sock"
+
+    # Check if SSH agent is running
+    if [ -z "$SSH_AUTH_SOCK" ] || ! [ -S "$SSH_AUTH_SOCK" ]; then
+        echo "Starting new SSH agent..."
+        eval "$(ssh-agent -s)"
+        ln -sf "$SSH_AUTH_SOCK" "$SSH_AUTH_SOCK_LINK"
+    fi
+
+    # Use the fixed socket path
+    export SSH_AUTH_SOCK="$SSH_AUTH_SOCK_LINK"
 fi
