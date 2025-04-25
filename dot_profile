@@ -23,9 +23,16 @@ fi
 export ASDF_DIR="$HOME/.asdf"
 if [ -d $ASDF_DIR ] ; then
     export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
-    . "$HOME/.asdf/completions/asdf.bash"
+    . <(asdf completion bash)
 fi
 
 
 export PATH="$HOME/.local/bin:$PATH"
 
+# Check if SSH agent is running
+if [ -z "$SSH_AUTH_SOCK" ] || ! [ -S "$SSH_AUTH_SOCK" ]; then
+    echo "Starting new SSH agent..."
+    eval "$(ssh-agent -s)"
+else
+    echo "SSH agent already running."
+fi
