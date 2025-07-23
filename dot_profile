@@ -44,13 +44,16 @@ if [ -z "$TMUX" ]; then
     # Fixed socket path
     SSH_AUTH_SOCK_LINK="$HOME/.ssh/ssh_auth_sock"
 
-    # If we don't have an SSH_AUTH_SOCK and the symbolic is dead, start the ssh agent
-    if [ -z "$SSH_AUTH_SOCK" ] && ! [ -S "$SSH_AUTH_SOCK_LINK" ]; then
-        echo "Starting new SSH agent..."
+    # Check if we have a working SSH agent
+    if ! ssh-add -l >/dev/null 2>&1; then
+        echo "No working SSH agent found, starting new one..."
         eval "$(ssh-agent -s)"
         ln -sf "$SSH_AUTH_SOCK" "$SSH_AUTH_SOCK_LINK"
+        export SSH_AUTH_SOCK="$SSH_AUTH_SOCK_LINK"
+    elif [ -n "$SSH_AUTH_SOCK" ] && [ -S "$SSH_AUTH_SOCK" ]; then
+        # We have a working agent, create/update the symlink
+        ln -sf "$SSH_AUTH_SOCK" "$SSH_AUTH_SOCK_LINK"
+        export SSH_AUTH_SOCK="$SSH_AUTH_SOCK_LINK"
     fi
-
-    # Use the fixed socket path
-    export SSH_AUTH_SOCK="$SSH_AUTH_SOCK_LINK"
 fi
+
