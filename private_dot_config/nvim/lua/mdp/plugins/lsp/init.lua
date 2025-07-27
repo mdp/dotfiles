@@ -34,7 +34,7 @@ return {
       }
     }
 
-    require("lspconfig").tsserver.setup({})
+    require("lspconfig").ts_ls.setup({})
     require("lspconfig").gopls.setup({})
     require("lspconfig").tailwindcss.setup({})
 
