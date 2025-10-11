@@ -1,6 +1,8 @@
-tags
-en.utf-8.add.spl
-*.exe
-.netrwhist
+tt.*
+.tests
+doc/tags
+debug
+.repro
+foo.*
 *.log
-.DS_Store
+data
