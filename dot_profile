@@ -12,27 +12,6 @@ if [ -f /home/linuxbrew/.linuxbrew/bin/brew ]; then
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
-if [ -d "$HOME/.cargo" ] ; then
-    . "$HOME/.cargo/env"
-fi
-
-if [ -d "/usr/local/go" ] ; then
-    export PATH=$PATH:/usr/local/go/bin
-fi
-
-export ASDF_DIR="$HOME/.asdf"
-if [ -d $ASDF_DIR ] ; then
-    export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
-    # Load completion based on current shell
-    if [ -n "$ZSH_VERSION" ]; then
-        . <(asdf completion zsh)
-    elif [ -n "$BASH_VERSION" ]; then
-        . <(asdf completion bash)
-    fi
-fi
-
-export PATH="$HOME/.local/bin:$PATH"
-
 # SSH agent setup - only run outside of tmux
 if [ -z "$TMUX" ]; then
     # Create SSH directory if it doesn't exist
