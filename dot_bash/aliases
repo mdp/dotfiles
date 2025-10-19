@@ -1,7 +1,9 @@
 # File system
-alias ls='eza -lh --group-directories-first --icons=auto'
+if command -v eta &> /dev/null; then
+  alias ls='eza -lh --group-directories-first --icons=auto'
+  alias lt='eza --tree --level=2 --long --icons --git'
+fi
 alias lsa='ls -a'
-alias lt='eza --tree --level=2 --long --icons --git'
 alias lta='lt -a'
 alias ff="fzf --preview 'bat --style=numbers --color=always {}'"
 alias cd="zd"
@@ -25,7 +27,6 @@ alias ....='cd ../../..'
 
 # Tools
 alias d='docker'
-alias r='rails'
 n() { if [ "$#" -eq 0 ]; then nvim .; else nvim "$@"; fi; }
 
 # Git
