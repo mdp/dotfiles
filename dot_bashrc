@@ -4,23 +4,31 @@
 
 # If not running interactively, don't do anything
 case $- in
-    *i*) ;;
-      *) return;;
+*i*) ;;
+*) return ;;
 esac
 
 #
 # Omarchy setup: use system omarchy if available, otherwise use chezmoi'd copy
 if [ -f ~/.local/share/omarchy/default/bash/rc ]; then
-    # On an omarchy machine - source from system installation
-    source ~/.local/share/omarchy/default/bash/rc
+  # On an omarchy machine - source from system installation
+  source ~/.local/share/omarchy/default/bash/rc
 elif [ -f ~/.bash/rc ]; then
-    # Not on an omarchy machine - use chezmoi'd copy
-    source ~/.bash/rc
+  # Not on an omarchy machine - use chezmoi'd copy
+  source ~/.bash/rc
 fi
 
 # Alias definitions.
 if [ -f ~/.aliasrc ]; then
-    . ~/.aliasrc
+  . ~/.aliasrc
 fi
 
-
+# pnpm
+if [[ -d ${HOME}/.local/share/pnpm ]]; then
+  export PNPM_HOME="${HOME}/.local/share/pnpm"
+  case ":$PATH:" in
+    *":$PNPM_HOME:"*) ;;
+    *) export PATH="$PNPM_HOME:$PATH" ;;
+  esac
+fi
+# pnpm end
