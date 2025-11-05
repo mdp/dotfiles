@@ -6,6 +6,7 @@ set completion-ignore-case on
 set completion-prefix-display-length 2
 set show-all-if-ambiguous on
 set show-all-if-unmodified on
+set enable-bracketed-paste on
 
 # Arrow keys match what you've typed so far against your command history
 "\e[A": history-search-backward

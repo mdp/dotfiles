@@ -73,3 +73,6 @@ if [ -d "$HOME/.lmstudio" ] ; then
     export PATH="$PATH:/Users/mdp/.lmstudio/bin"
 fi
 
+if command -v mise &> /dev/null; then
+  eval "$(mise activate bash)"
+fi

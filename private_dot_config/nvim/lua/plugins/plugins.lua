@@ -1,13 +1,13 @@
 -- since this is just an example spec, don't actually load anything here and return an empty spec
 -- stylua: ignore
 if true then return {
-  {
-    "tadmccorkle/markdown.nvim",
-    ft = "markdown", -- or 'event = "VeryLazy"'
-    opts = {
-      -- configuration here or empty for defaults
-    },
-  }
+  -- {
+  --   "tadmccorkle/markdown.nvim",
+  --   ft = "markdown", -- or 'event = "VeryLazy"'
+  --   opts = {
+  --     -- configuration here or empty for defaults
+  --   },
+  -- }
 } end
 
 -- every spec file under the "plugins" directory will be loaded automatically by lazy.nvim
