@@ -69,10 +69,9 @@ if [ -d "/opt/nvim-linux-x86_64/bin" ] ; then
     export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 fi
 
-if [ -d "$HOME/.lmstudio" ] ; then
-    export PATH="$PATH:/Users/mdp/.lmstudio/bin"
-fi
 
 if command -v mise &> /dev/null; then
-  eval "$(mise activate bash)"
+  eval "$(mise activate bash)" 2>/dev/null
 fi
+
+. "$HOME/.local/bin/env"

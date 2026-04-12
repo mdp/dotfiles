@@ -1,0 +1,4 @@
+# Alias definitions.
+if [ -f ~/.aliasrc ]; then
+  . ~/.aliasrc
+fi
