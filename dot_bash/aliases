@@ -10,10 +10,18 @@ alias cd="zd"
 zd() {
   if [ $# -eq 0 ]; then
     builtin cd ~ && return
+  elif [ "$1" = "-" ]; then
+    # Handle cd - specially (don't use zoxide for previous directory)
+    builtin cd - && printf "\U000F17A9 " && pwd || echo "Error: Previous directory not found"
   elif [ -d "$1" ]; then
     builtin cd "$1"
   else
-    z "$@" && printf "\U000F17A9 " && pwd || echo "Error: Directory not found"
+    # Use zoxide for fuzzy directory jumping
+    if command -v z &> /dev/null; then
+      z "$@" && printf "\U000F17A9 " && pwd || echo "Error: Directory not found"
+    else
+      echo "Error: Directory not found"
+    fi
   fi
 }
 open() {
