@@ -74,4 +74,6 @@ if command -v mise &> /dev/null; then
   eval "$(mise activate bash)" 2>/dev/null
 fi
 
-. "$HOME/.local/bin/env"
+if [ -f "$HOME/.local/bin/env" ]; then
+    . "$HOME/.local/bin/env"
+fi
